@@ -1,27 +1,39 @@
 #include <iostream>
 #include <cmath>
 
-int jumpSearch(int arr[], int n, int key) {
+using namespace std;
+
+void linearSearch(int arr[], int start, int end, int key) {
+    for (int i = start; i <= end; i++) {
+        if (arr[i] == key) {
+            cout << "Present " << i << endl;
+            return;
+        }
+    }
+    cout << "Not Present" << endl;
+}
+
+void jumpSearch(int arr[], int n, int key) {
+    if (arr[0] == key) {
+        cout << "Present 0" << endl;
+        return;
+    }
+
     int step = sqrt(n); // Step size
     int prev = 0;
 
     // Jump in steps until finding a range where key might be present
-    while (prev < n && arr[std::min(step, n) - 1] < key) {
+    while (prev < n && arr[min(step, n) - 1] < key) {
         prev = step;
         step += sqrt(n);
         if (prev >= n) {
-            return -1; // Element not found
+            cout << "Not Present" << endl;
+            return;
         }
     }
 
     // Perform linear search in the identified block
-    for (int i = prev; i < std::min(step, n); i++) {
-        if (arr[i] == key) {
-            return i; // Return index of key
-        }
-    }
-
-    return -1; // If key is not found
+    linearSearch(arr, prev, min(step, n) - 1, key);
 }
 
 int main() {
@@ -29,12 +41,7 @@ int main() {
     int n = sizeof(arr) / sizeof(arr[0]);
     int key = 15;
     
-    int result = jumpSearch(arr, n, key);
-    if (result != -1) {
-        std::cout << "Element found at index: " << result << std::endl;
-    } else {
-        std::cout << "Element not found" << std::endl;
-    }
+    jumpSearch(arr, n, key);
 
     return 0;
 }
