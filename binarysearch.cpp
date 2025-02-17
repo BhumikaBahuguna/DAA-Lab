@@ -4,7 +4,7 @@ int binary_search(int [],int ,int);
 int main(){
     int a[50],n,i,key,res;
     cout<<"enter no to elements to store:";
-    cin>>n;
+    cin>>n; 
     cout<<"enter elements(in sorted order):";
     for(i=0;i<n;i++){
         cin>>a[i];
