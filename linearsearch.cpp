@@ -3,7 +3,7 @@ using namespace std;
 int linearsearch(int a[], int n, int key) {
     for (int i = 0; i < n; i++) {
         if (a[i] == key) {
-            return i; // Return the index where the key is found
+            return i; // Return the index where the key is found 
         }
     }
     return -1; // Return -1 if the key is not found
