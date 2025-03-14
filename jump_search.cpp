@@ -11,7 +11,7 @@ void bSearch(int arr[], int low, int high, int k) {
             f = 1;
             printf("Present %d", mid);
             return;
-        } 
+        }
         else if (arr[mid] < k) {
             low = mid + 1;  // Move right
         } 
